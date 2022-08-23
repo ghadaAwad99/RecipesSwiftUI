@@ -18,20 +18,8 @@ struct RecipesListView: View {
                 Text("Search can not be empty")
                     .opacity(isSearchEmpty ? 1 : 0)
                 RecipesList(viewModel: viewModel, searchQuery: searchQuery)
-                    /*.overlay{
-                        if self.viewModel.recipes.isEmpty{
-                            EmptyResultsView(query: $searchQuery)
-                        }
-                      
-                    }*/
-                  
             }
-            
         }
-        .onAppear {
-            self.viewModel.fetchRecipes(query: "chicken", filter: "vegan")
-        }
-      
     }
 }
 

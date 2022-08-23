@@ -10,14 +10,22 @@ import SwiftUI
 struct HealthLablesView : View{
     var recipe: Recipe
     var body: some View{
-        ForEach(0...5, id: \.self){ i in
-            HStack {
+        ScrollView(.horizontal){
+            HStack(spacing: 8) {
+                ForEach(0...5, id: \.self){ i in
                 Button(recipe.healthLabels[i] ?? "") {
-                }.buttonStyle(.bordered)
-                    .foregroundColor(.blue)
-                    .font(.caption)
-                    .disabled(true)
+                }
+                .fixedSize()
+                .buttonStyle(.bordered)
+                .foregroundColor(.blue)
+                 .font(.footnote)
+                .disabled(true)
+                .buttonBorderShape(.capsule)
+                    
+            
+            }
             }
         }
+           
     }
 }

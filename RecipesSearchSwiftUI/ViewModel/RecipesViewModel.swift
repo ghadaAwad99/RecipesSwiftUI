@@ -31,7 +31,7 @@ class RecipesViewModel: ObservableObject {
 
                    print("recipes response")
                    self.recipes = recipesResponse.hits
-                  //print(recipesResponse.hits[0].recipe.label)
+                   print(recipesResponse.hits.count)
            }
    }
     

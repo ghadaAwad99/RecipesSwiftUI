@@ -11,8 +11,9 @@ import SwiftUI
 struct RecipeRow: View {
     var item: Hit
     var body: some View {
-        VStack {
-            HStack {
+        VStack(alignment: .leading){
+            
+            HStack(alignment: .top, spacing: 16) {
                 AsyncImage(url: URL(string: item.recipe.image)) { image in
                     image
                         .resizable()
@@ -22,15 +23,20 @@ struct RecipeRow: View {
                 }
                 .frame(width: 150, height: 150)
                 .cornerRadius(20)
-                VStack{
+                
+                VStack(spacing: 8){
                     Text("\(item.recipe.label)")
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.title3)
+                    
                     Text("\(item.recipe.source)")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    HealthLablesView(recipe: item.recipe)
+                        .font(.footnote)
+                    .foregroundColor(.gray)
                 }
-                
-            }.padding()
-        }
+            }
+            
+            HealthLablesView(recipe: item.recipe)
+        }.padding(6)
     }
 }
