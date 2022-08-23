@@ -12,6 +12,7 @@ struct RecipesList: View {
     @Environment(\.dismissSearch) private var dismissSearch
     @ObservedObject var viewModel: RecipesViewModel
     @State var searchQuery : String
+  
     
     var body: some View {
         VStack{
@@ -42,14 +43,19 @@ struct RecipesList: View {
                 
                 
             }
-            )
-        
+            ).keyboardType(.asciiCapable)
             .onSubmit(of: .search){
-                viewModel.fetchRecipes(query: searchQuery, filter: "vegan")
-                viewModel.addSuggestion(suggestion: searchQuery)
+                viewModel.validateInput(input: searchQuery)
+                if viewModel.isInputValid {
+                    viewModel.fetchRecipes(query: searchQuery, filter: "vegan")
+                    viewModel.addSuggestion(suggestion: searchQuery)
+                }
                 dismissSearch()
             }
+          
         }
     }
+  
+
 }
 

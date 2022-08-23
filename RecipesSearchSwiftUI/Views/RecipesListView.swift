@@ -15,8 +15,10 @@ struct RecipesListView: View {
         NavigationView{
             VStack {
                 FiltersViews(viewModel: viewModel)
-                Text("Search can not be empty")
-                    .opacity(isSearchEmpty ? 1 : 0)
+                Text("Search input is not valid")
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                    .opacity(viewModel.isInputValid ? 0 : 1)
                 RecipesList(viewModel: viewModel, searchQuery: searchQuery)
             }
         }
