@@ -12,9 +12,10 @@ struct RecipesListView: View {
     var body: some View {
         NavigationView{
             List(viewModel.recipes) { item in
+                NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
                         VStack {
                                     HStack {
-                                        AsyncImage(url: URL(string: "https://blckbirds.com/wp-content/uploads/2021/10/pexels-kammeran-gonzalezkeola-6128227-2.jpg")) { image in
+                                        AsyncImage(url: URL(string: item.recipe.image)) { image in
                                             image
                                                 .resizable()
                                                 .scaledToFill()
@@ -34,6 +35,7 @@ struct RecipesListView: View {
                                       
                                     }.padding()
                                 }
+                }
             
             }
         }
