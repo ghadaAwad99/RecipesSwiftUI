@@ -10,14 +10,12 @@ import Alamofire
 
 class RecipesViewModel: ObservableObject {
    @Published  var recipes: [Hit] = []
+    @Published var suggestionsList : [String] = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
    
     func fetchRecipes( query: String, filter: String) {
-           let type = "public"
-           let appId = "d22c1dbf"
-           let appKey = "87181e89d80e667c503c6a20ac642d4a"
-           let baseUrl = "https://api.edamam.com/search?"
+      
        
-           AF.request("\(baseUrl)q=\(query)&app_id=\(appId)&app_key=\(appKey)&health=\(filter)" , method: .get)
+        AF.request("\(Constants.baseUrl)q=\(query)&app_id=\(Constants.appId)&app_key=\(Constants.appKey)&health=\(filter)" , method: .get)
 
                .validate()
 
@@ -33,8 +31,15 @@ class RecipesViewModel: ObservableObject {
 
                    print("recipes response")
                    self.recipes = recipesResponse.hits
-                  print(recipesResponse.hits[0].recipe.label)
+                  //print(recipesResponse.hits[0].recipe.label)
            }
    }
+    
+    func addSuggestion(suggestion: String){
+        if !suggestionsList.contains(suggestion){
+            suggestionsList.append(suggestion)
+        }
+        UserDefaults.standard.set(suggestionsList, forKey: Constants.userDefaultsKey)
+    }
     
 }

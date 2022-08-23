@@ -14,11 +14,17 @@ struct RecipeDetailsView: View {
               Text("\(recipe.label)")
         }.navigationBarItems(trailing: Button(action: {
             print("button pressed")
-            //shareButton(url: self.recipe.url)
+            shareButton(url: self.recipe.url)
         }){
             Image(systemName:"square.and.arrow.up" ).imageScale(.large)
         })
       
+    }
+    func shareButton(url: String) {
+            let url = URL(string: url)
+            let activityController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+
+            UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
     }
 }
 
