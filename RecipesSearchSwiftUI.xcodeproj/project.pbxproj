@@ -106,6 +106,7 @@
 		7F8D98D028B47D4700B09423 /* RecipesSearchSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				7F8D990B28B52A9C00B09423 /* Utils */,
 				7F8D990428B4DC2000B09423 /* ViewModel */,
 				7F8D990128B4DB7300B09423 /* Model */,
 				7F8D98FE28B4DAE300B09423 /* Views */,
@@ -155,6 +156,7 @@
 		7F8D990128B4DB7300B09423 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7F8D990C28B52ABB00B09423 /* Services */,
 				7F8D990228B4DB8D00B09423 /* ResponseModel.swift */,
 			);
 			path = Model;
@@ -166,6 +168,20 @@
 				7F8D990528B4DC3B00B09423 /* RecipesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7F8D990B28B52A9C00B09423 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7F8D990C28B52ABB00B09423 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

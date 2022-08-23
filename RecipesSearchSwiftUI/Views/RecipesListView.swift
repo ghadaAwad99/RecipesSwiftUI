@@ -36,6 +36,21 @@ struct RecipesListView: View {
     }
 }
 
+struct HealthLablesView : View{
+    var recipe: Recipe
+    var body: some View{
+        ForEach(0...5, id: \.self){ i in
+            HStack {
+                Button(recipe.healthLabels[i] ?? "") {
+                }.buttonStyle(.bordered)
+                    .foregroundColor(.blue)
+                    .font(.caption)
+                    .disabled(true)
+            }
+        }
+    }
+}
+
 struct Filters : View {
     @ObservedObject var viewModel: RecipesViewModel
     var body: some View{
@@ -85,8 +100,7 @@ struct RecipeRow: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("\(item.recipe.source)")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HealthLablesView(recipe: item.recipe)
                 }
                 
             }.padding()
