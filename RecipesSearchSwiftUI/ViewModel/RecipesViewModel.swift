@@ -15,15 +15,9 @@ class RecipesViewModel: ObservableObject {
            let type = "public"
            let appId = "d22c1dbf"
            let appKey = "87181e89d80e667c503c6a20ac642d4a"
-           let baseUrl = "https://api.edamam.com/api/recipes/v2?"
-           let param : Parameters = [
-               "type" : type,
-               "q":query,
-               "app_id" : appId,
-               "app_key" : appKey
-           ]
-
-           AF.request(baseUrl , method: .get, parameters: param)
+           let baseUrl = "https://api.edamam.com/search?"
+       
+           AF.request("\(baseUrl)q=\(query)&app_id=\(appId)&app_key=\(appKey)" , method: .get)
 
                .validate()
 
@@ -39,7 +33,7 @@ class RecipesViewModel: ObservableObject {
 
                    print("recipes response")
                    self.recipes = recipesResponse.hits
-                   print(recipesResponse.hits[0].recipe.label)
+                 //  print(recipesResponse.hits[0].recipe.label)
            }
    }
 }
