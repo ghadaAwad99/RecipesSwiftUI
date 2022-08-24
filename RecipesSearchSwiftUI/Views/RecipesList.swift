@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct SearchableView: View {
   @Environment(\.isSearching) var isSearching
     @ObservedObject var viewModel: RecipesViewModel
@@ -22,10 +23,17 @@ struct SearchableView: View {
       List(viewModel.recipes, id: \.id) { item in
           NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
               RecipeRow(item: item)
+                  .onAppear{
+                      let thresholdIndex = viewModel.recipes.endIndex - 1
+                      if thresholdIndex == viewModel.recipes.firstIndex(where: {$0.id == item.id}) ?? 0 {
+                          print("last item")
+                          viewModel.loadMoreRecipes(nextPageURL: viewModel.response.links?.next?.href ?? "")
+                              }
+                  }
           }
           
           
-      }
+      }.padding(.vertical)
       .onChange(of: isSearching){ newValue in
           if !newValue {
               print("not searching")
@@ -86,7 +94,7 @@ struct RecipesList: View {
                 }
                 // only call API and add to suggestion list when the input is valid
                 if viewModel.isInputValid {
-                    viewModel.fetchRecipes(query: searchQuery, filter: "vegan")
+                    viewModel.fetchRecipes(query: searchQuery, filter: Constants.keto)
                     viewModel.addSuggestion(suggestion: searchQuery)
                 }
                 //viewModel.checkForEmptyList()

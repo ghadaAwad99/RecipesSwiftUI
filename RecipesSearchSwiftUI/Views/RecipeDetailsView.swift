@@ -37,7 +37,7 @@ struct RecipeDetailsView: View {
                     .padding()
                     .font(.subheadline)
                 ForEach(recipe.ingredientLines.indices, id: \.self){ item in
-                    Text(recipe.ingredientLines[item] ?? "")
+                    Text(recipe.ingredientLines[item])
                 }
                 Button("Try It Now!"){
                     self.isSafariPresented = true
@@ -51,7 +51,7 @@ struct RecipeDetailsView: View {
                     .buttonBorderShape(.capsule)
                 }
             }
-        .navigationTitle("title")
+     
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
             print("button pressed")

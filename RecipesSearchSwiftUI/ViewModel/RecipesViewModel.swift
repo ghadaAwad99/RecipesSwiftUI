@@ -10,11 +10,36 @@ import Alamofire
 
 class RecipesViewModel: ObservableObject {
    @Published  var recipes: [Hit] = []
+    @Published var response : ResponseModel!
     @Published var suggestionsList  = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
-    var searchRegex = ".*[^A-Za-z].*"
+    var searchRegex = ".*[^A-Za-z ].*"
     @Published var isInputValid = true
     @Published var isSearchEmpty = true
     @Published var isListEmpty = false
+    
+    func loadMoreRecipes(nextPageURL: String){
+        AF.request(nextPageURL , method: .get)
+
+               .validate()
+
+               .responseDecodable(of: ResponseModel.self){ (response) in
+
+                   guard let recipesResponse = response.value else {
+
+                       print("else")
+                     
+
+                       return
+
+                   }
+
+                   print("recipes response")
+                   self.response = recipesResponse
+                   self.recipes.append(contentsOf: recipesResponse.hits)
+                   self.checkForEmptyList()
+                   print(recipesResponse.hits.count)
+           }
+    }
     
    
     func fetchRecipes( query: String, filter: String) {
@@ -29,12 +54,14 @@ class RecipesViewModel: ObservableObject {
                    guard let recipesResponse = response.value else {
 
                        print("else")
+                       
 
                        return
 
                    }
 
                    print("recipes response")
+                   self.response = recipesResponse
                    self.recipes = recipesResponse.hits
                    self.checkForEmptyList()
                    print(recipesResponse.hits.count)
