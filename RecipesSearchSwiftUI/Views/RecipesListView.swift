@@ -10,7 +10,6 @@ import SwiftUI
 struct RecipesListView: View {
     @ObservedObject var viewModel = RecipesViewModel()
     @State var searchQuery = ""
-    @State var isSearchEmpty = false
     var body: some View {
         NavigationView{
             VStack {

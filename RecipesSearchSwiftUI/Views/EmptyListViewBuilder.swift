@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmptyListViewBuilder: View {
+    var message: String
     var objects: [Hit]
 
     var body: some View {
@@ -22,6 +23,6 @@ struct EmptyListViewBuilder: View {
     }
 
     var emptyListView: some View {
-        Text("Oops, loos like there's no data...\n Search for a recipe")
+        Text(message)
     }
 }

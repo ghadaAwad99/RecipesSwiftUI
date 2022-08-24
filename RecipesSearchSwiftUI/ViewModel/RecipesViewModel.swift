@@ -11,8 +11,10 @@ import Alamofire
 class RecipesViewModel: ObservableObject {
    @Published  var recipes: [Hit] = []
     @Published var suggestionsList : [String] = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
-    var searchRegex = "[A-Za-z ]+"
+    var searchRegex = ".*[^A-Za-z].*"
     @Published var isInputValid = true
+    @Published var isSearchEmpty = true
+    @Published var isListEmpty = false
    
     func fetchRecipes( query: String, filter: String) {
       
@@ -33,6 +35,7 @@ class RecipesViewModel: ObservableObject {
 
                    print("recipes response")
                    self.recipes = recipesResponse.hits
+                   self.checkForEmptyList()
                    print(recipesResponse.hits.count)
            }
    }
@@ -45,13 +48,22 @@ class RecipesViewModel: ObservableObject {
     }
     
     func validateInput(input: String) {
-        if input.range(of: searchRegex, options: .regularExpression) == nil
+        if input.range(of: searchRegex, options: .regularExpression) != nil
             || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             print("not valid")
             isInputValid = false
         }else {
             print("valid")
             isInputValid = true
+        }
+    }
+    
+    func checkForEmptyList(){
+        if recipes.isEmpty{
+            isListEmpty = true
+            print("empty list ")
+        }else{
+            isListEmpty = false
         }
     }
 }

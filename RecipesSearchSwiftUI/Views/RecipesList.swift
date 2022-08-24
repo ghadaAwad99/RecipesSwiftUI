@@ -7,23 +7,43 @@
 
 import SwiftUI
 
+struct SearchableView: View {
+  @Environment(\.isSearching) var isSearching
+    @ObservedObject var viewModel: RecipesViewModel
+
+
+    
+  var body: some View {
+      List(viewModel.recipes, id: \.id) { item in
+          NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
+              RecipeRow(item: item)
+          }
+          
+      }.onChange(of: isSearching){ newValue in
+          if !newValue {
+              print("not searching")
+              viewModel.isInputValid = true
+              viewModel.isListEmpty = false
+          }
+      }
+  }
+}
+
 struct RecipesList: View {
  
     @Environment(\.dismissSearch) private var dismissSearch
+    @Environment(\.isSearching) var isSearching
     @ObservedObject var viewModel: RecipesViewModel
     @State var searchQuery : String
   
     
     var body: some View {
         VStack{
-            EmptyListViewBuilder(objects: viewModel.recipes)
-        
-        List(viewModel.recipes, id: \.id) { item in
-            NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
-                RecipeRow(item: item)
-            }
+            viewModel.isSearchEmpty ? Text("Searchh for a Recipe...") : Text("")
             
-        }
+            viewModel.isListEmpty ? Text("We couldn't find: \(searchQuery)") : Text("")
+        
+            SearchableView(viewModel: viewModel)
             
         .navigationTitle("Recipes")
             .searchable(text: $searchQuery,
@@ -39,19 +59,28 @@ struct RecipesList: View {
                       print("suggestion \(suggestion)")
                         searchQuery = suggestion
                     }
+                }   
+            })
+          
+            .keyboardType(.asciiCapable)
+            .onChange(of: searchQuery){ newQuery in
+                viewModel.validateInput(input: newQuery)
+                if newQuery.isEmpty{
+                    viewModel.isSearchEmpty = true
                 }
-                
-                
-            }
-            ).keyboardType(.asciiCapable)
+                else{
+                    viewModel.isSearchEmpty = false
+                }
+                }
             .onSubmit(of: .search){
-                viewModel.validateInput(input: searchQuery)
                 if viewModel.isInputValid {
                     viewModel.fetchRecipes(query: searchQuery, filter: "vegan")
                     viewModel.addSuggestion(suggestion: searchQuery)
                 }
+                //viewModel.checkForEmptyList()
                 dismissSearch()
             }
+            
           
         }
     }
