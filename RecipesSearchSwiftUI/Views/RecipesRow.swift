@@ -19,7 +19,7 @@ struct RecipeRow: View {
                         .resizable()
                         .scaledToFill()
                 } placeholder: {
-                    Color.purple.opacity(0.1)
+                    Color(Constants.primaryColor).opacity(0.1)
                 }
                 .frame(width: 150, height: 150)
                 .cornerRadius(20)

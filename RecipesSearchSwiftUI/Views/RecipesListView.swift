@@ -14,13 +14,14 @@ struct RecipesListView: View {
     var body: some View {
         NavigationView{
             VStack {
+               
                 Text("Search input is not valid")
                     .font(.subheadline)
                     .foregroundColor(.red)
                     .opacity(viewModel.isInputValid ? 0 : 1)
-                FiltersViews(viewModel: viewModel)
+               
                 
-                RecipesList(viewModel: viewModel, searchQuery: searchQuery)
+                RecipesList(viewModel: viewModel, searchQuery: $searchQuery)
             }
         }
     }

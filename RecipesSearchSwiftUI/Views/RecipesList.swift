@@ -10,22 +10,30 @@ import SwiftUI
 struct SearchableView: View {
   @Environment(\.isSearching) var isSearching
     @ObservedObject var viewModel: RecipesViewModel
+    @Environment(\.dismissSearch) private var dismissSearch
 
 
     
   var body: some View {
+      if !isSearching {
+          FiltersViews(viewModel: viewModel)
+      }
+      
       List(viewModel.recipes, id: \.id) { item in
           NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
               RecipeRow(item: item)
           }
           
-      }.onChange(of: isSearching){ newValue in
+          
+      }
+      .onChange(of: isSearching){ newValue in
           if !newValue {
               print("not searching")
               viewModel.isInputValid = true
               viewModel.isListEmpty = false
           }
       }
+     
   }
 }
 
@@ -34,7 +42,7 @@ struct RecipesList: View {
     @Environment(\.dismissSearch) private var dismissSearch
     @Environment(\.isSearching) var isSearching
     @ObservedObject var viewModel: RecipesViewModel
-    @State var searchQuery : String
+    @Binding var searchQuery : String
   
     
     var body: some View {
@@ -72,6 +80,7 @@ struct RecipesList: View {
                     }
                 }
             .onSubmit(of: .search){
+                print("onSubmit")
                 if searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     viewModel.isInputValid = false
                 }

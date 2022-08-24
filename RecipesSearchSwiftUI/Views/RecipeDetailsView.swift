@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeDetailsView: View {
     // whether or not to show the Safari ViewController
        @State var isSafariPresented = false
+    
     let recipe: Recipe
     var body: some View{
      
@@ -43,8 +44,11 @@ struct RecipeDetailsView: View {
                 }.sheet(isPresented: $isSafariPresented) {
                     SafariView(url:URL(string: recipe.url)!)
                 }
-                
-                .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
+                    .background(Color(Constants.primaryColor))
+                    .foregroundColor(Color.white)
+                    .clipShape(Capsule())
+                    .buttonBorderShape(.capsule)
                 }
             }
         .navigationTitle("title")

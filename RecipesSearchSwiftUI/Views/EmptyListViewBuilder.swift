@@ -23,6 +23,9 @@ struct EmptyListViewBuilder: View {
     }
 
     var emptyListView: some View {
-        Text(message)
+        VStack{
+            Text(message)
+        }
+       
     }
 }

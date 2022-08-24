@@ -18,8 +18,8 @@ struct ChipCustomView : View {
             .fixedSize()
             .background(Capsule(style: .continuous).strokeBorder(Color(strokeColor)).background(Color(backgroundColor)))
             .clipShape(Capsule())
-            .foregroundColor(.blue)
-            .font(.footnote)
+            .foregroundColor(Color(Constants.primaryColor))
+            .font(.system(size: 14, weight: .bold))
     }
 }
 
