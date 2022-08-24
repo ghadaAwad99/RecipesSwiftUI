@@ -13,7 +13,7 @@ struct HealthLablesView : View{
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 8) {
                 ForEach(recipe!.healthLabels.indices, id: \.self){ i in
-                    ChipCustomView(text: recipe!.healthLabels[i] , backgroundColor: Constants.grayColor, strokeColor: Constants.grayColor)
+                    ChipCustomView(text: recipe?.healthLabels[i] ?? "" , backgroundColor: Constants.grayColor, strokeColor: Constants.grayColor)
                 }
             }
         }

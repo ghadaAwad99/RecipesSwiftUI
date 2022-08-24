@@ -8,42 +8,8 @@
 import SwiftUI
 
 
-struct SearchableView: View {
-  @Environment(\.isSearching) var isSearching
-    @ObservedObject var viewModel: RecipesViewModel
-    @Environment(\.dismissSearch) private var dismissSearch
 
 
-    
-  var body: some View {
-      if !isSearching {
-          FiltersViews(viewModel: viewModel)
-      }
-      
-      List(viewModel.recipes, id: \.id) { item in
-          NavigationLink(destination: RecipeDetailsView(recipe: item.recipe)){
-              RecipeRow(item: item)
-                  .onAppear{
-                      let thresholdIndex = viewModel.recipes.endIndex - 1
-                      if thresholdIndex == viewModel.recipes.firstIndex(where: {$0.id == item.id}) ?? 0 {
-                          print("last item")
-                          viewModel.loadMoreRecipes(nextPageURL: viewModel.response.links?.next?.href ?? "")
-                              }
-                  }
-          }
-          
-          
-      }.padding(.vertical)
-      .onChange(of: isSearching){ newValue in
-          if !newValue {
-              print("not searching")
-              viewModel.isInputValid = true
-              viewModel.isListEmpty = false
-          }
-      }
-     
-  }
-}
 
 struct RecipesList: View {
  
@@ -72,7 +38,6 @@ struct RecipesList: View {
                     id: \.self
                 ) { suggestion in
                     Button(suggestion) {
-                      print("suggestion \(suggestion)")
                         searchQuery = suggestion
                     }
                 }   
@@ -88,7 +53,6 @@ struct RecipesList: View {
                     }
                 }
             .onSubmit(of: .search){
-                print("onSubmit")
                 if searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     viewModel.isInputValid = false
                 }
@@ -97,7 +61,6 @@ struct RecipesList: View {
                     viewModel.fetchRecipes(query: searchQuery, filter: Constants.keto)
                     viewModel.addSuggestion(suggestion: searchQuery)
                 }
-                //viewModel.checkForEmptyList()
                 dismissSearch()
             }
         }

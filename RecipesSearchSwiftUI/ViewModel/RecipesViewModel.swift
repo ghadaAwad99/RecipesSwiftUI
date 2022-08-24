@@ -9,64 +9,29 @@ import Foundation
 import Alamofire
 
 class RecipesViewModel: ObservableObject {
-   @Published  var recipes: [Hit] = []
+    var searchRegex = ".*[^A-Za-z ].*"
+    
+    @Published  var recipes: [Hit] = []
     @Published var response : ResponseModel!
     @Published var suggestionsList  = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
-    var searchRegex = ".*[^A-Za-z ].*"
     @Published var isInputValid = true
     @Published var isSearchEmpty = true
     @Published var isListEmpty = false
     
-    func loadMoreRecipes(nextPageURL: String){
-        AF.request(nextPageURL , method: .get)
-
-               .validate()
-
-               .responseDecodable(of: ResponseModel.self){ (response) in
-
-                   guard let recipesResponse = response.value else {
-
-                       print("else")
-                     
-
-                       return
-
-                   }
-
-                   print("recipes response")
-                   self.response = recipesResponse
-                   self.recipes.append(contentsOf: recipesResponse.hits)
-                   self.checkForEmptyList()
-                   print(recipesResponse.hits.count)
-           }
-    }
     
-   
+  
     func fetchRecipes( query: String, filter: String) {
-      
-       
         AF.request("\(Constants.baseUrl)q=\(query)&app_id=\(Constants.appId)&app_key=\(Constants.appKey)&health=\(filter)" , method: .get)
-
-               .validate()
-
-               .responseDecodable(of: ResponseModel.self){ (response) in
-
-                   guard let recipesResponse = response.value else {
-
-                       print("else")
-                       
-
+              .validate()
+              .responseDecodable(of: ResponseModel.self){ (response) in
+                  guard let recipesResponse = response.value else {
                        return
-
                    }
-
-                   print("recipes response")
                    self.response = recipesResponse
                    self.recipes = recipesResponse.hits
                    self.checkForEmptyList()
-                   print(recipesResponse.hits.count)
            }
-   }
+    }
     
     func addSuggestion(suggestion: String){
         if suggestionsList.count == 10 {
@@ -80,10 +45,8 @@ class RecipesViewModel: ObservableObject {
     
     func validateInput(input: String) {
         if input.range(of: searchRegex, options: .regularExpression) != nil {
-            print("not valid")
             isInputValid = false
         }else {
-            print("valid")
             isInputValid = true
         }
     }
@@ -91,9 +54,21 @@ class RecipesViewModel: ObservableObject {
     func checkForEmptyList(){
         if recipes.isEmpty{
             isListEmpty = true
-            print("empty list ")
         }else{
             isListEmpty = false
         }
+    }
+    
+    func loadMoreRecipes(nextPageURL: String){
+        AF.request(nextPageURL , method: .get)
+               .validate()
+               .responseDecodable(of: ResponseModel.self){ (response) in
+                   guard let recipesResponse = response.value else {
+                       return
+                   }
+                   self.response = recipesResponse
+                   self.recipes.append(contentsOf: recipesResponse.hits)
+                   self.checkForEmptyList()
+           }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RecipeRow: View {
     var item: Hit
+    
     var body: some View {
         VStack(alignment: .leading){
             
@@ -21,8 +22,8 @@ struct RecipeRow: View {
                 } placeholder: {
                     Color(Constants.primaryColor).opacity(0.1)
                 }
-                .frame(width: 150, height: 150)
-                .cornerRadius(20)
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(20)
                 
                 VStack(spacing: 8){
                     Text("\(item.recipe.label)")
@@ -32,7 +33,7 @@ struct RecipeRow: View {
                     Text("\(item.recipe.source)")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.footnote)
-                    .foregroundColor(.gray)
+                        .foregroundColor(.gray)
                 }
             }
             

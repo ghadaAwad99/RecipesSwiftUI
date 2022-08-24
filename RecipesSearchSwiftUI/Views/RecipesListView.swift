@@ -20,19 +20,9 @@ struct RecipesListView: View {
                     .foregroundColor(.red)
                     .opacity(viewModel.isInputValid ? 0 : 1)
                
-                
                 RecipesList(viewModel: viewModel, searchQuery: $searchQuery)
             }
         }
     }
 }
-
-
-//
-//struct RecipesListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RecipesListView()
-//    }
-//}
-
 
