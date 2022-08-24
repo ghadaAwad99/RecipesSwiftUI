@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
+    // whether or not to show the Safari ViewController
+       @State var isSafariPresented = false
     let recipe: Recipe
     var body: some View{
      
@@ -37,33 +39,32 @@ struct RecipeDetailsView: View {
                     Text(recipe.ingredientLines[item] ?? "")
                 }
                 Button("Try It Now!"){
-                    print(recipe.url)
-                }.buttonStyle(.borderedProminent)
-             
+                    self.isSafariPresented = true
+                }.sheet(isPresented: $isSafariPresented) {
+                    SafariView(url:URL(string: recipe.url)!)
+                }
+                
+                .buttonStyle(.borderedProminent)
+                }
             }
-            }
-       
         .navigationTitle("title")
-            .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
             print("button pressed")
-            //shareButton(url: self.recipe.url)
-        }){
-            Image(systemName:"square.and.arrow.up" ).imageScale(.large)
-    })
-        
-        
-  
-}
-       
-      
+            shareButton(url: self.recipe.url)
+                }){
+                Image(systemName:"square.and.arrow.up" ).imageScale(.large)
+            })
+        }
     }
     func shareButton(url: String) {
-            let url = URL(string: url)
-            let activityController = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-
-            UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+        let activityController = UIActivityViewController(activityItems: [URL(string: url)!], applicationActivities: nil)
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        
+        windowScene?.keyWindow?.rootViewController?.present(activityController, animated: true, completion: nil)
     }
+
 
 
 //struct RecipeDetailsView_Previews: PreviewProvider {
