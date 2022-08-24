@@ -26,6 +26,7 @@
 		7F8D990328B4DB8D00B09423 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D990228B4DB8D00B09423 /* ResponseModel.swift */; };
 		7F8D990628B4DC3B00B09423 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D990528B4DC3B00B09423 /* RecipesViewModel.swift */; };
 		7F8D990828B4DFB500B09423 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D990728B4DFB500B09423 /* RecipeDetailsView.swift */; };
+		7FC44E9428B65D73009FECD4 /* ChipCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		7F8D990228B4DB8D00B09423 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		7F8D990528B4DC3B00B09423 /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
 		7F8D990728B4DFB500B09423 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
+		7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				7F1D0C0E28B53AEB00DE7304 /* RecipesList.swift */,
 				7F1D0C1028B58E5800DE7304 /* EmptyListViewBuilder.swift */,
 				7F36667B28B61269007175CD /* SafariView.swift */,
+				7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				7F1D0C0B28B53A9A00DE7304 /* FiltersView.swift in Sources */,
 				7F1D0C0928B53A6000DE7304 /* RecipesRow.swift in Sources */,
 				7F8D990628B4DC3B00B09423 /* RecipesViewModel.swift in Sources */,
+				7FC44E9428B65D73009FECD4 /* ChipCustomView.swift in Sources */,
 				7F8D990328B4DB8D00B09423 /* ResponseModel.swift in Sources */,
 				7F8D98D228B47D4700B09423 /* RecipesSearchSwiftUIApp.swift in Sources */,
 				7F1D0C0528B5352C00DE7304 /* Constants.swift in Sources */,

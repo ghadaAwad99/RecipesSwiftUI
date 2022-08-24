@@ -10,14 +10,16 @@ import SwiftUI
 struct RecipesListView: View {
     @ObservedObject var viewModel = RecipesViewModel()
     @State var searchQuery = ""
+
     var body: some View {
         NavigationView{
             VStack {
-                FiltersViews(viewModel: viewModel)
                 Text("Search input is not valid")
                     .font(.subheadline)
                     .foregroundColor(.red)
                     .opacity(viewModel.isInputValid ? 0 : 1)
+                FiltersViews(viewModel: viewModel)
+                
                 RecipesList(viewModel: viewModel, searchQuery: searchQuery)
             }
         }

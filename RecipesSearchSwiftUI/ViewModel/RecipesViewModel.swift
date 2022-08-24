@@ -10,11 +10,12 @@ import Alamofire
 
 class RecipesViewModel: ObservableObject {
    @Published  var recipes: [Hit] = []
-    @Published var suggestionsList : [String] = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
+    @Published var suggestionsList  = UserDefaults.standard.object(forKey: Constants.userDefaultsKey) as? [String] ?? []
     var searchRegex = ".*[^A-Za-z].*"
     @Published var isInputValid = true
     @Published var isSearchEmpty = true
     @Published var isListEmpty = false
+    
    
     func fetchRecipes( query: String, filter: String) {
       
@@ -41,6 +42,9 @@ class RecipesViewModel: ObservableObject {
    }
     
     func addSuggestion(suggestion: String){
+        if suggestionsList.count == 10 {
+            suggestionsList.removeFirst()
+        }
         if !suggestionsList.contains(suggestion){
             suggestionsList.append(suggestion)
         }
@@ -48,8 +52,7 @@ class RecipesViewModel: ObservableObject {
     }
     
     func validateInput(input: String) {
-        if input.range(of: searchRegex, options: .regularExpression) != nil
-            || input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if input.range(of: searchRegex, options: .regularExpression) != nil {
             print("not valid")
             isInputValid = false
         }else {

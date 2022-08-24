@@ -8,24 +8,19 @@
 import SwiftUI
 
 struct HealthLablesView : View{
-    var recipe: Recipe
+    var color = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+    var recipe: Recipe?
     var body: some View{
-        ScrollView(.horizontal){
+        ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 8) {
-                ForEach(0...5, id: \.self){ i in
-                Button(recipe.healthLabels[i] ?? "") {
+                ForEach(recipe!.healthLabels.indices, id: \.self){ i in
+                  ChipCustomView(text: recipe!.healthLabels[i] ?? "", backgroundColor: color, strokeColor: color)
                 }
-                .fixedSize()
-                .buttonStyle(.bordered)
-                .foregroundColor(.blue)
-                 .font(.footnote)
-                .disabled(true)
-                .buttonBorderShape(.capsule)
-                    
-            
-            }
             }
         }
            
     }
 }
+
+
+

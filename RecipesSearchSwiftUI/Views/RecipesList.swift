@@ -52,7 +52,7 @@ struct RecipesList: View {
                         suggestions: {
                 
                 ForEach(
-                    viewModel.suggestionsList,
+                    viewModel.suggestionsList.reversed(),
                     id: \.self
                 ) { suggestion in
                     Button(suggestion) {
@@ -61,18 +61,21 @@ struct RecipesList: View {
                     }
                 }   
             })
-          
             .keyboardType(.asciiCapable)
             .onChange(of: searchQuery){ newQuery in
-                viewModel.validateInput(input: newQuery)
-                if newQuery.isEmpty{
-                    viewModel.isSearchEmpty = true
-                }
-                else{
-                    viewModel.isSearchEmpty = false
-                }
+                    viewModel.validateInput(input: newQuery)
+                    if newQuery.isEmpty{
+                        viewModel.isSearchEmpty = true
+                    }
+                    else{
+                        viewModel.isSearchEmpty = false
+                    }
                 }
             .onSubmit(of: .search){
+                if searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    viewModel.isInputValid = false
+                }
+                // only call API and add to suggestion list when the input is valid
                 if viewModel.isInputValid {
                     viewModel.fetchRecipes(query: searchQuery, filter: "vegan")
                     viewModel.addSuggestion(suggestion: searchQuery)
@@ -80,11 +83,7 @@ struct RecipesList: View {
                 //viewModel.checkForEmptyList()
                 dismissSearch()
             }
-            
-          
         }
     }
-  
-
 }
 
