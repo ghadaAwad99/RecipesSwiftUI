@@ -52,7 +52,13 @@ Recipes App is an iOS application to search food recipes, built usin SwiftUI and
 
 - Pagination
 
-<video src="https://user-images.githubusercontent.com/74993384/186769505-e0f1aea8-f357-4787-99d3-9af5ef1d6c0f.mp4">
+https://user-images.githubusercontent.com/74993384/186769505-e0f1aea8-f357-4787-99d3-9af5ef1d6c0f.mp4
+  
+  
+# Recipes App Demo
+
+https://user-images.githubusercontent.com/74993384/186780631-93791785-a6cd-46a8-a8a4-ffbbfe52960b.mp4
+
 
 
 # API used: 
