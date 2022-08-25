@@ -46,5 +46,10 @@ Recipes App is an iOS application to search food recipes, built usin SwiftUI and
 
 <img src="https://user-images.githubusercontent.com/74993384/186544769-86994abc-ef51-4d64-8e20-205077100c0f.png" height="640" width="300">
 
+- Pagination
+
+<video src="https://user-images.githubusercontent.com/74993384/186769505-e0f1aea8-f357-4787-99d3-9af5ef1d6c0f.mp4">
+
+
 # API used: 
   https://developer.edamam.com/edamam-docs-recipe-api
