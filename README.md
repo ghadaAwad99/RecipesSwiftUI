@@ -30,6 +30,10 @@ Recipes App is an iOS application to search food recipes, built usin SwiftUI and
 
 <img src="https://user-images.githubusercontent.com/74993384/186543902-6681d62e-33fd-44db-9790-de596395a658.png" height="640" width="300">
 
+- Search for recipes
+
+<img src="https://user-images.githubusercontent.com/74993384/186777086-1eed6b16-0324-4ce4-a3f6-31f4b2731356.png" height="640" width="300">
+
 - Health Filters
 
 <img src="https://user-images.githubusercontent.com/74993384/186544094-d1f49848-1643-4c82-b657-ec5a33998c40.png" height="640" width="300">
