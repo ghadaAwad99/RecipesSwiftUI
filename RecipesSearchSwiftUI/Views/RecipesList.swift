@@ -26,6 +26,7 @@ struct RecipesList: View {
             viewModel.isListEmpty ? Text("We couldn't find: \(searchQuery)") : Text("")
         
             SearchableView(viewModel: viewModel)
+                .padding(.vertical)
             
         .navigationTitle("Recipes")
             .searchable(text: $searchQuery,

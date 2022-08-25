@@ -32,7 +32,7 @@ struct SearchableView: View {
                   }
           }
       }
-      .padding(.vertical)
+      
       
       .onChange(of: isSearching){ newValue in
           if !newValue {
