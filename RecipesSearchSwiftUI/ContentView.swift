@@ -13,9 +13,3 @@ struct ContentView: View {
         RecipesListView()
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RecipesListView( suggestionsList: <#[String]#>)
-//    }
-//}

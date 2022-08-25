@@ -38,6 +38,8 @@ struct SearchableView: View {
           if !newValue {
               viewModel.isInputValid = true
               viewModel.isListEmpty = false
+          }else{
+              viewModel.isSearchEmpty = false
           }
       }
      
