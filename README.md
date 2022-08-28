@@ -24,19 +24,19 @@ Recipes App is an iOS application to search food recipes, built usin SwiftUI and
 
 - Main Screen
 
-<img src="https://user-images.githubusercontent.com/74993384/186543460-0e7f5a5d-af81-44b5-b721-8648239a4585.png" height="640" width="300">
+<img src="https://user-images.githubusercontent.com/74993384/187089702-301272bc-6b06-4f62-ae10-c3d7e9168920.png" height="640" width="300">
 
 - Search Suggestions based on user recent search
 
-<img src="https://user-images.githubusercontent.com/74993384/186543902-6681d62e-33fd-44db-9790-de596395a658.png" height="640" width="300">
+<img src="https://user-images.githubusercontent.com/74993384/187088820-a729e686-e529-4a67-83ee-d86de10df800.png" height="640" width="300">
 
 - Search for recipes
 
-<img src="https://user-images.githubusercontent.com/74993384/186777086-1eed6b16-0324-4ce4-a3f6-31f4b2731356.png" height="640" width="300">
+<img src="https://user-images.githubusercontent.com/74993384/187088884-41aa3e4d-fde2-44a4-9eb0-8dfd6dadee67.png" height="640" width="300">
 
 - Health Filters
 
-<img src="https://user-images.githubusercontent.com/74993384/186544094-d1f49848-1643-4c82-b657-ec5a33998c40.png" height="640" width="300">
+<img src="https://user-images.githubusercontent.com/74993384/187088954-5a4f4fd1-2dcb-41fd-a3a8-fcce6e49e5f2.png" height="640" width="300">
 
 - Recipe Details Screen
 
@@ -52,13 +52,11 @@ Recipes App is an iOS application to search food recipes, built usin SwiftUI and
 
 - Pagination
 
-https://user-images.githubusercontent.com/74993384/186769505-e0f1aea8-f357-4787-99d3-9af5ef1d6c0f.mp4
-  
+https://user-images.githubusercontent.com/74993384/187090059-b788647f-bb95-4f9a-a46d-a3fea3d942da.mp4
   
 # Recipes App Demo
 
-https://user-images.githubusercontent.com/74993384/186780631-93791785-a6cd-46a8-a8a4-ffbbfe52960b.mp4
-
+https://user-images.githubusercontent.com/74993384/187090150-b0cccf46-31a3-465c-975b-5b710e0f766d.mp4
 
 
 # API used: 
