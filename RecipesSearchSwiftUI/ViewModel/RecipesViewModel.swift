@@ -20,8 +20,8 @@ class RecipesViewModel: ObservableObject {
     
     
   
-    func fetchRecipes( query: String, filter: String) {
-        AF.request("\(Constants.baseUrl)q=\(query)&app_id=\(Constants.appId)&app_key=\(Constants.appKey)&health=\(filter)" , method: .get)
+    func fetchRecipes( query: String) {
+        AF.request("\(Constants.baseUrl)q=\(query)&app_id=\(Constants.appId)&app_key=\(Constants.appKey)" , method: .get)
               .validate()
               .responseDecodable(of: ResponseModel.self){ (response) in
                   guard let recipesResponse = response.value else {
@@ -39,6 +39,7 @@ class RecipesViewModel: ObservableObject {
         }
         if !suggestionsList.contains(suggestion){
             suggestionsList.append(suggestion)
+            print("suggestion list \(suggestion)")
         }
         UserDefaults.standard.set(suggestionsList, forKey: Constants.userDefaultsKey)
     }

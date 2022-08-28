@@ -23,7 +23,7 @@ struct RecipesListView: View {
                 RecipesList(viewModel: viewModel, searchQuery: $searchQuery)
             }
         }.onAppear{
-            viewModel.fetchRecipes(query: "", filter: Constants.all)
+            viewModel.fetchRecipes(query: "chicken")
         }
     }
 }

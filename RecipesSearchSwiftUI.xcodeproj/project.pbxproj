@@ -26,7 +26,7 @@
 		7F8D990628B4DC3B00B09423 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D990528B4DC3B00B09423 /* RecipesViewModel.swift */; };
 		7F8D990828B4DFB500B09423 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8D990728B4DFB500B09423 /* RecipeDetailsView.swift */; };
 		7FC44E9428B65D73009FECD4 /* ChipCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */; };
-		7FC44F0E28B6ECB4009FECD4 /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC44F0D28B6ECB4009FECD4 /* SearchableView.swift */; };
+		7FFC91A928BB1E9A003AEDEE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC91A828BB1E9A003AEDEE /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,7 @@
 		7F8D990528B4DC3B00B09423 /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
 		7F8D990728B4DFB500B09423 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 		7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipCustomView.swift; sourceTree = "<group>"; };
-		7FC44F0D28B6ECB4009FECD4 /* SearchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableView.swift; sourceTree = "<group>"; };
+		7FFC91A828BB1E9A003AEDEE /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,7 @@
 				7F1D0C0E28B53AEB00DE7304 /* RecipesList.swift */,
 				7F36667B28B61269007175CD /* SafariView.swift */,
 				7FC44E9328B65D73009FECD4 /* ChipCustomView.swift */,
-				7FC44F0D28B6ECB4009FECD4 /* SearchableView.swift */,
+				7FFC91A828BB1E9A003AEDEE /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +290,7 @@
 			mainGroup = 7F8D98C528B47D4700B09423;
 			packageReferences = (
 				7F8D98FB28B4DA1000B09423 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7FBBA19628BA13FD00E05243 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */,
 			);
 			productRefGroup = 7F8D98CF28B47D4700B09423 /* Products */;
 			projectDirPath = "";
@@ -333,8 +334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC44F0E28B6ECB4009FECD4 /* SearchableView.swift in Sources */,
 				7F1D0C0D28B53AC200DE7304 /* HealthLablesViews.swift in Sources */,
+				7FFC91A928BB1E9A003AEDEE /* SearchBar.swift in Sources */,
 				7F8D98D428B47D4700B09423 /* ContentView.swift in Sources */,
 				7F36667C28B61269007175CD /* SafariView.swift in Sources */,
 				7F8D990828B4DFB500B09423 /* RecipeDetailsView.swift in Sources */,
@@ -673,6 +674,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		7FBBA19628BA13FD00E05243 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Tunous/DebouncedOnChange.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 class Constants {
-    static let keto = "keto-friendly"
-    static let lowSugar = "low-sugar"
+    //static let keto = "keto-friendly"
+    //static let lowSugar = "low-sugar"
     static let vegan = "vegan"
     static let all = "keto-friendly&health=low-sugar&health=vegan"
     static let noLable = " "

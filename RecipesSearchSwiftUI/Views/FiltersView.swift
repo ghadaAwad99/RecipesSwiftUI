@@ -19,25 +19,30 @@ struct FiltersViews : View {
             Button("ALL"){
                 isAllSelected = true
                 if isAllSelected {
-                    viewModel.fetchRecipes(query: "", filter: Constants.all)
                     isVeganSelected = false
                     isKetoSelected = false
                     isLowSugarSelected = false
+                    viewModel.recipes =  viewModel.recipes.filter{
+                        $0.recipe.healthLabels.contains("Vegan") ||   $0.recipe.healthLabels.contains("Keto-Friendly") || $0.recipe.healthLabels.contains("Low Sugar")
+                    }
                 }
             }.buttonStyle(.bordered)
                 .background(isAllSelected ? Color(Constants.primaryColor) : Color(Constants.grayColor))
                 .foregroundColor(Color.black)
                 .clipShape(Capsule())
                 .buttonBorderShape(.capsule)
-               
+            
             Button("Vegan"){
                 isVeganSelected = true
                 if isVeganSelected {
                     isAllSelected = false
                     isKetoSelected = false
                     isLowSugarSelected = false
-                    viewModel.fetchRecipes(query: "", filter: Constants.vegan)
+                    viewModel.recipes =  viewModel.recipes.filter{
+                        $0.recipe.healthLabels.contains("Vegan")
+                    }
                 }
+                
             }.buttonStyle(.bordered)
                 .background(isVeganSelected ? Color(Constants.primaryColor) : Color(Constants.grayColor))
                 .foregroundColor(Color.black)
@@ -50,7 +55,9 @@ struct FiltersViews : View {
                     isAllSelected = false
                     isVeganSelected = false
                     isLowSugarSelected = false
-                    viewModel.fetchRecipes(query: "", filter: Constants.keto)
+                    viewModel.recipes =  viewModel.recipes.filter{
+                        $0.recipe.healthLabels.contains("Keto-Friendly")
+                    }
                 }
             }.buttonStyle(.bordered)
                 .background(isKetoSelected ? Color(Constants.primaryColor) : Color(Constants.grayColor))
@@ -64,7 +71,9 @@ struct FiltersViews : View {
                     isAllSelected = false
                     isVeganSelected = false
                     isKetoSelected = false
-                    viewModel.fetchRecipes(query: "", filter: Constants.lowSugar)
+                    viewModel.recipes =  viewModel.recipes.filter{
+                        $0.recipe.healthLabels.contains("Low Sugar")
+                    }
                 }
             }.buttonStyle(.bordered)
                 .background(isLowSugarSelected ? Color(Constants.primaryColor) : Color(Constants.grayColor))
